@@ -891,6 +891,7 @@ Bool process_command_line( int argc, char *argv[] )
   
   memset(gcmd_line.ops_file_name, 0, MAX_LENGTH);
   memset(gcmd_line.fct_file_name, 0, MAX_LENGTH);
+  memset(gcmd_line.out_plan_file_name, 0, MAX_LENGTH);
   memset(gcmd_line.path, 0, MAX_LENGTH);
 
   while ( --argc && ++argv ) {
@@ -905,7 +906,11 @@ Bool process_command_line( int argc, char *argv[] )
 	case 'p':
 	  strncpy( gcmd_line.path, *argv, MAX_LENGTH );
 	  break;
-	case 'o':
+        case 'P':
+            strncpy(gcmd_line.out_plan_file_name, *argv, MAX_LENGTH);
+            break;
+
+  case 'o':
 	  strncpy( gcmd_line.ops_file_name, *argv, MAX_LENGTH );
 	  break;
 	case 'f':

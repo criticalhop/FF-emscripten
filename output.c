@@ -759,7 +759,8 @@ void print_plan( void )
 {  
 
   int i, ef, j;
-
+  FILE *fp;
+  fp = fopen(gcmd_line.out_plan_file_name, "w");
   printf("\n\nff: found legal plan as follows");
   printf("\n\nstep ");
   for ( i = 0; i < gnum_plan_ops; i++ ) {
@@ -773,7 +774,27 @@ void print_plan( void )
 /*     } */
 
     printf("%4d: ", i);
-    print_op_name( gplan_ops[i] );
+    int index = gplan_ops[i];
+    int i;
+    Action *a = gop_conn[index].action;
+    fprintf(fp, "(");
+    if (!a->norm_operator &&
+         !a->pseudo_action) {
+        printf("REACH-GOAL");
+        
+    }
+    else {
+        fprintf(fp, "%s", a->name);
+        printf("%s", a->name);
+        for (i = 0; i < a->num_name_vars; i++) {
+            printf(" %s", gconstants[a->name_inst_table[i]]);
+            fprintf(fp, " %s", gconstants[a->name_inst_table[i]]);
+            
+        }
+        
+    }
+    fprintf(fp, ")\n");
+
     printf("\n     ");
   }
 
