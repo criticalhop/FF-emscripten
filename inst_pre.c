@@ -295,7 +295,7 @@ void collect_all_strings( void )
       if ( (type_num = position_in_types_table( t->item )) == -1 ) {
 	printf("\npredicate %s is declared to use unknown or empty type %s\n\n", 
 	       f->item->item, t->item);
-	exit( 1 );
+        continue;
       }
       if ( ar == MAX_ARITY ) {
 	printf("\narity of %s to high! increase MAX_ARITY (currently %d)\n\n",
