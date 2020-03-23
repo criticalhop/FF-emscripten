@@ -163,13 +163,14 @@ void collect_all_strings(void)
     gnum_types = 1;
 
     for (f = gorig_constant_list; f; f = f->next) {
-        printf("next item is %s\n", f->item->next->item);
         if ((type_num = position_in_types_table(f->item->next->item)) == -1) {
             if (gnum_types == MAX_TYPES) {
                 printf("\ntoo many types! increase MAX_TYPES (currently %d)\n\n",
                        MAX_TYPES);
                 exit(1);
             }
+            /* printf("next item is %s\n", f->item->next->item);
+*/
             gtype_names[gnum_types] = new_Token(strlen(f->item->next->item) + 1);
             strcpy(gtype_names[gnum_types], f->item->next->item);
             gtype_size[gnum_types] = 0;
@@ -243,7 +244,8 @@ void collect_all_strings(void)
             if ((type_num = position_in_types_table(t->item)) == -1) {
                 printf("\npredicate %s is declared to use unknown or empty type %s\n\n",
                        f->item->item, t->item);
-                exit(1);
+                /*exit(1);*/
+                continue;
             }
             if (ar == MAX_ARITY) {
                 printf("\narity of %s to high! increase MAX_ARITY (currently %d)\n\n",
