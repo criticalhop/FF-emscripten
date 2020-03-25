@@ -20,8 +20,6 @@
  * 
  *********************************************************************/
 
-
-
 /*
  * THIS SOURCE CODE IS SUPPLIED  ``AS IS'' WITHOUT WARRANTY OF ANY KIND, 
  * AND ITS AUTHOR AND THE JOURNAL OF ARTIFICIAL INTELLIGENCE RESEARCH 
@@ -38,12 +36,6 @@
  * of the user.
  */
 
-
-
-
-
-
-
 /*********************************************************************
  * File: orderings.h
  *
@@ -51,37 +43,20 @@
  *
  * Author: Joerg Hoffmann 1999
  *
- *********************************************************************/ 
-
-
-
-
-
-
+ *********************************************************************/
 
 #ifndef _ORDERINGS_H
 #define _ORDERINGS_H
 
+void compute_goal_agenda(void);
 
+void build_False_set(int ft);
 
-void compute_goal_agenda( void );
+void detect_ordering_constraints(void);
+void setup_E(int ft);
+void unsetup_E(int ft);
+Bool possibly_achievable(int ft);
 
-
-
-void build_False_set( int ft );
-
-
-
-void detect_ordering_constraints( void );
-void setup_E( int ft );
-void unsetup_E( int ft );
-Bool possibly_achievable( int ft );
-
-
-
-void build_goal_agenda( void );
-
-
-
+void build_goal_agenda(void);
 
 #endif /* _ORDERINGS_H */

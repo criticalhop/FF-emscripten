@@ -1,6 +1,5 @@
 
 
-
 /*********************************************************************
  * (C) Copyright 2001 Albert Ludwigs University Freiburg
  *     Institute of Computer Science
@@ -21,8 +20,6 @@
  * 
  *********************************************************************/
 
-
-
 /*
  * THIS SOURCE CODE IS SUPPLIED  ``AS IS'' WITHOUT WARRANTY OF ANY KIND, 
  * AND ITS AUTHOR AND THE JOURNAL OF ARTIFICIAL INTELLIGENCE RESEARCH 
@@ -39,14 +36,6 @@
  * of the user.
  */
 
-
-
-
-
-
-
-
-
 /*********************************************************************
  * File: inst_hard.h
  * Description: headers for multiplying hard operators.
@@ -54,44 +43,27 @@
  *
  * Author: Joerg Hoffmann 2000
  *
- *********************************************************************/ 
-
-
-
-
-
-
-
+ *********************************************************************/
 
 #ifndef _INST_HARD_H
 #define _INST_HARD_H
 
+void build_hard_action_templates(void);
 
+void cleanup_hard_domain(void);
+Bool var_used_in_literals(int code_var, Literal *ef);
+void decrement_inferior_vars_in_literals(int var, Literal *ef);
 
-void build_hard_action_templates( void );
+void multiply_hard_op_parameters(void);
+void create_hard_mixed_operators(Operator *o, int curr_var);
+Effect *instantiate_Effect(Effect *e);
+WffNode *instantiate_wff(WffNode *w);
+Bool full_possibly_positive(Fact *f);
+Bool full_possibly_negative(Fact *f);
+int instantiated_fact_adress(Fact *f);
 
-
-
-void cleanup_hard_domain( void );
-Bool var_used_in_literals( int code_var, Literal *ef );
-void decrement_inferior_vars_in_literals( int var, Literal *ef );
-
-
-
-void multiply_hard_op_parameters( void );
-void create_hard_mixed_operators( Operator *o, int curr_var );
-Effect *instantiate_Effect( Effect *e );
-WffNode *instantiate_wff( WffNode *w );
-Bool full_possibly_positive( Fact *f );
-Bool full_possibly_negative( Fact *f );
-int instantiated_fact_adress( Fact *f );
-
-
-
-void multiply_hard_effect_parameters( void );
-void create_hard_pseudo_effects( PseudoAction *a, Effect *e, int curr_var );
-void make_instantiate_literals( PseudoActionEffect *e, Literal *ll );
-
-
+void multiply_hard_effect_parameters(void);
+void create_hard_pseudo_effects(PseudoAction *a, Effect *e, int curr_var);
+void make_instantiate_literals(PseudoActionEffect *e, Literal *ll);
 
 #endif /* _INST_HARD_H */
