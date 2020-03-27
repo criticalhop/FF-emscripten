@@ -56,7 +56,7 @@ OBJECTS 	= $(SOURCES:.c=.o)
 
 
 ff: $(OBJECTS) $(PDDL_PARSER_OBJ)
-	$(CC) -s WASM=1 -o ff.html $(OBJECTS) $(PDDL_PARSER_OBJ) $(CFLAGS) $(LIBS)
+	$(CC) -s WASM=1 -s INVOKE_RUN=0 -s ALLOW_MEMORY_GROWTH=1 -o ff.html $(OBJECTS) $(PDDL_PARSER_OBJ) $(CFLAGS) $(LIBS)
 
 # pddl syntax
 scan-fct_pddl.tab.c: scan-fct_pddl.y lex.fct_pddl.c
@@ -74,7 +74,7 @@ lex.ops_pddl.c: lex-ops_pddl.l
 
 # misc
 clean:
-	rm -f *.o *.bak *~ *% core *_pure_p9_c0_400.o.warnings \
+	rm -f *.o *.html *.js *.wasm *.bak *~ *% core *_pure_p9_c0_400.o.warnings \
         \#*\# $(RES_PARSER_SRC) $(PDDL_PARSER_SRC)
 
 veryclean: clean
