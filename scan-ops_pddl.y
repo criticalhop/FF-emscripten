@@ -86,7 +86,7 @@ int supported( char *str )
 		   NULL };     
 
   for (i=0; NULL != sup[i]; i++) {
-    if ( SAME == strcmp(sup[i], str) ) {
+    if ( SAME == strcasecmp(sup[i], str) ) {
       return TRUE;
     }
   }

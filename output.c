@@ -702,5 +702,6 @@ void print_plan(void)
     }
     fprintf(fp, "; cost = 0 (unit cost)\n");
     fprintf(fp, "; planner FF-v2.3\n");
+    fflush(fp);
     close(fp);
 }
