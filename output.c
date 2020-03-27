@@ -794,7 +794,9 @@ void print_plan( void )
         
     }
     fprintf(fp, ")\n");
-
+    // fprintf(fp, "; cost = 0 (unit cost)\n");
+    fflush(fp);
+    close(fp);
     printf("\n     ");
   }
 
