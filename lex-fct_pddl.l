@@ -86,14 +86,11 @@ z [Zz]
 
 {n}{o}{t}  {  return(NOT_TOK); }
 
-:?[a-zA-Z][a-zA-Z0-9\-_]* { strupcase( yytext );  
-  strcpy(yylval.string, yytext ); return(NAME); }
+:?[a-zA-Z][a-zA-Z0-9\-_]* { strcpy(yylval.string, yytext ); return(NAME); }
 
-\?[a-zA-Z][a-zA-Z0-9\-_\[\]]* {strupcase( yytext );
- strcpy(yylval.string, yytext); return(VARIABLE); }
+\?[a-zA-Z][a-zA-Z0-9\-_\[\]]* { strcpy(yylval.string, yytext); return(VARIABLE); }
 
-"-"[ \t]*[a-zA-Z][a-zA-Z0-9\-_\[\]]*  {strupcase(yytext); 
- strcpy(yylval.string, rmdash(yytext)); return(TYPE); }
+"-"[ \t]*[a-zA-Z][a-zA-Z0-9\-_\[\]]*  { strcpy(yylval.string, rmdash(yytext)); return(TYPE); }
 
 "-"[ \t]*"("[ \t]*{e}{i}{t}{h}{e}{r} { return(EITHER_TOK); }
 

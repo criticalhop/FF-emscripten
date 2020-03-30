@@ -1,6 +1,5 @@
 
 
-
 /*********************************************************************
  * (C) Copyright 2001 Albert Ludwigs University Freiburg
  *     Institute of Computer Science
@@ -21,8 +20,6 @@
  * 
  *********************************************************************/
 
-
-
 /*
  * THIS SOURCE CODE IS SUPPLIED  ``AS IS'' WITHOUT WARRANTY OF ANY KIND, 
  * AND ITS AUTHOR AND THE JOURNAL OF ARTIFICIAL INTELLIGENCE RESEARCH 
@@ -39,66 +36,39 @@
  * of the user.
  */
 
-
-
-
-
-
-
-
-
-
-
 /*********************************************************************
  * File: relax.h
  * Description: headers for relaxed ADL planning
  *
  * Author: Joerg Hoffmann 2000
  *
- *********************************************************************/ 
-
-
-
-
-
+ *********************************************************************/
 
 #ifndef _RELAX_H
 #define _RELAX_H
 
+Bool LESS(int a, int b);
 
+void initialize_relax(void);
+int get_1P_and_H(State *S, State *current_goals);
+int get_1P(State *S, State *current_goals);
+void get_A(State *S);
+void collect_A_info(void);
 
-Bool LESS( int a, int b );
+int build_fixpoint(State *S);
+void initialize_fixpoint(State *S);
+void activate_ft(int index, int time);
+void activate_ef(int index, int time);
+void new_fact(int index);
+void new_ef(int index);
+void reset_fixpoint(void);
+Bool all_goals_activated(int time);
+void print_fixpoint_result(void);
 
-
-
-void initialize_relax( void );
-int get_1P_and_H( State *S, State *current_goals );
-int get_1P( State *S, State *current_goals );
-void get_A( State *S );
-void collect_A_info( void );
-
-
-
-int build_fixpoint( State *S );
-void initialize_fixpoint( State *S );
-void activate_ft( int index, int time );
-void activate_ef( int index, int time );
-void new_fact( int index );
-void new_ef( int index );
-void reset_fixpoint( void );
-Bool all_goals_activated( int time ); 
-void print_fixpoint_result( void );
-
-
-
-int extract_1P( int max, Bool H_info );
-int initialize_goals( int max );
-void achieve_goals( int time );
-void collect_H_info( void );
-void reset_search_info( void );
-
-
+int extract_1P(int max, Bool H_info);
+int initialize_goals(int max);
+void achieve_goals(int time);
+void collect_H_info(void);
+void reset_search_info(void);
 
 #endif /* _RELAX_H */
-
-

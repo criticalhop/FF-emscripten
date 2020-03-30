@@ -1,6 +1,5 @@
 
 
-
 /*********************************************************************
  * (C) Copyright 2001 Albert Ludwigs University Freiburg
  *     Institute of Computer Science
@@ -21,8 +20,6 @@
  * 
  *********************************************************************/
 
-
-
 /*
  * THIS SOURCE CODE IS SUPPLIED  ``AS IS'' WITHOUT WARRANTY OF ANY KIND, 
  * AND ITS AUTHOR AND THE JOURNAL OF ARTIFICIAL INTELLIGENCE RESEARCH 
@@ -39,50 +36,33 @@
  * of the user.
  */
 
-
-
-
-
 /*********************************************************************
  * File: parse.h
  * Description: Functions for the pddl parser
  *
  * Author: Frank Rittinger 1998 / Joerg Hoffmann 1999
  *
- *********************************************************************/ 
-
-
-
-
+ *********************************************************************/
 
 #ifndef _PARSE_H
 #define _PARSE_H
 
+char *copy_Token(char *s);
+TokenList *copy_TokenList(TokenList *source);
+char *rmdash(char *s);
 
+void build_orig_constant_list(void);
+void collect_type_names_in_pl(PlNode *n);
+int get_type(char *str);
+void make_either_ty(TypedList *tyl);
+void make_either_ty_in_pl(PlNode *n);
+void normalize_tyl_in_pl(PlNode **n);
 
-char *copy_Token( char *s );
-TokenList *copy_TokenList( TokenList *source );
-void strupcase( char *from );
-char *rmdash( char *s );
-
-
-
-void build_orig_constant_list( void );
-void collect_type_names_in_pl( PlNode *n );
-int get_type( char *str );
-void make_either_ty( TypedList *tyl );
-void make_either_ty_in_pl( PlNode *n );
-void normalize_tyl_in_pl( PlNode **n );
-
-
-
-Bool make_adl_domain( void );
-Bool make_conjunction_of_atoms( PlNode **n );
-Bool is_wff( PlNode *n );
-Bool make_effects( PlNode **n );
-Bool is_eff_literal( PlNode *n );
-Bool make_conjunction_of_literals( PlNode **n );
-
-
+Bool make_adl_domain(void);
+Bool make_conjunction_of_atoms(PlNode **n);
+Bool is_wff(PlNode *n);
+Bool make_effects(PlNode **n);
+Bool is_eff_literal(PlNode *n);
+Bool make_conjunction_of_literals(PlNode **n);
 
 #endif /* PARSE */

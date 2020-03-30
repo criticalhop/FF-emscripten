@@ -9,9 +9,9 @@
 TYPE	= 
 ADDONS	= 
 
-CC      = gcc
+CC      = emcc
 
-CFLAGS	= -O6 -Wall -g -ansi $(TYPE) $(ADDONS) 
+CFLAGS	= -D_XOPEN_SOURCE=600 -O3 -Wall -Wno-implicit-function-declaration -g -ansi $(TYPE) $(ADDONS) 
 # -g -pg
 
 LIBS    = -lm
@@ -56,7 +56,7 @@ OBJECTS 	= $(SOURCES:.c=.o)
 
 
 ff: $(OBJECTS) $(PDDL_PARSER_OBJ)
-	$(CC) -o ff $(OBJECTS) $(PDDL_PARSER_OBJ) $(CFLAGS) $(LIBS)
+	$(CC) -s WASM=1 -o ff.html $(OBJECTS) $(PDDL_PARSER_OBJ) $(CFLAGS) $(LIBS)
 
 # pddl syntax
 scan-fct_pddl.tab.c: scan-fct_pddl.y lex.fct_pddl.c
